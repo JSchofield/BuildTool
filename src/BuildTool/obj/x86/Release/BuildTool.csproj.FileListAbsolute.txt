@@ -1,0 +1,5 @@
+C:\Users\jon\BuildTool\src\BuildTool\bin\Release\BuildTool.exe
+C:\Users\jon\BuildTool\src\BuildTool\bin\Release\BuildTool.pdb
+C:\Users\jon\BuildTool\src\BuildTool\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\jon\BuildTool\src\BuildTool\obj\x86\Release\BuildTool.exe
+C:\Users\jon\BuildTool\src\BuildTool\obj\x86\Release\BuildTool.pdb

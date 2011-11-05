@@ -1,0 +1,7 @@
+C:\Users\jon\BuildTool\src\Example.Build\bin\Debug\Example.Build.exe
+C:\Users\jon\BuildTool\src\Example.Build\bin\Debug\Example.Build.pdb
+C:\Users\jon\BuildTool\src\Example.Build\bin\Debug\BuildTool.exe
+C:\Users\jon\BuildTool\src\Example.Build\bin\Debug\BuildTool.pdb
+C:\Users\jon\BuildTool\src\Example.Build\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\jon\BuildTool\src\Example.Build\obj\Debug\Example.Build.exe
+C:\Users\jon\BuildTool\src\Example.Build\obj\Debug\Example.Build.pdb

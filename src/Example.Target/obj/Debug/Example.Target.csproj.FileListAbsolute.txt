@@ -1,0 +1,5 @@
+C:\Users\jon\BuildTool\src\Example.Target\bin\Debug\Example.Target.dll
+C:\Users\jon\BuildTool\src\Example.Target\bin\Debug\Example.Target.pdb
+C:\Users\jon\BuildTool\src\Example.Target\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\jon\BuildTool\src\Example.Target\obj\Debug\Example.Target.dll
+C:\Users\jon\BuildTool\src\Example.Target\obj\Debug\Example.Target.pdb
