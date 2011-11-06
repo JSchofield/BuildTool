@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Diagnostics;
 
 namespace BuildTool
 {
-    public class MSBuild
+    public class MSBuild: IOutputHandler
     {
         private const string msBuildExeFile = @"C:\Windows\Microsoft.NET\Framework\v4.0.30319\msbuild.exe";
         private readonly string _projectFile;
@@ -22,7 +21,7 @@ namespace BuildTool
 
         private ProcessRunner CreateMSBuildProcess(string projectFile)
         {
-            return new ProcessRunner(msBuildExeFile, projectFile, DataReceiver);
+            return new ProcessRunner(new ProcessInfo { FileName = msBuildExeFile, Arguments = projectFile, WorkingDirectory = "." }, this);
         }
 
         public string Run()
@@ -31,23 +30,27 @@ namespace BuildTool
             return _compileOutput;
         }
 
-        private void DataReceiver(object sender, DataReceivedEventArgs e)
+        public void ReceiveOutput(string output)
         {
             // Analyse output to get the path to the binary
             if (_outputFilesBeingCopied)
             {
-                var index = e.Data.IndexOf(" -> ");
+                var index = output.IndexOf(" -> ");
                 if (index > 0)
                 {
-                    _compileOutput = e.Data.Substring(index + 4);
+                    _compileOutput = output.Substring(index + 4);
                 }
                 _outputFilesBeingCopied = false;
             }
 
-            if (e.Data == "CopyFilesToOutputDirectory:")
+            if (output == "CopyFilesToOutputDirectory:")
             {
                 _outputFilesBeingCopied = true;
             }
+        }
+
+        public void ReceiveError(string error)
+        {
         }
     }
 }

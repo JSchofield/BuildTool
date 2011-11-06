@@ -34,7 +34,7 @@ namespace BuildTool
         private void InvokeBuildExecutable(string executable, string[] args)
         {
             Console.WriteLine(string.Format("{0} {1}", executable, args[0]));
-            var invokeBuildExe = new ProcessRunner(executable, string.Join(" ", args));
+            var invokeBuildExe = new ProcessRunner(new ProcessInfo { FileName = executable, Arguments = string.Join(" ", args), WorkingDirectory = "." });
             invokeBuildExe.Run();
         }
     }
