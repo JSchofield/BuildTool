@@ -34,10 +34,18 @@ namespace BuildTool
         private void InvokeBuildExecutable(string executable, string[] args)
         {
             Console.WriteLine(string.Format("{0} {1}", executable, args[0]));
+
             var invokeBuildExe =
                 new ProcessRunner(
-                    new Command { FileName = executable, Arguments = string.Join(" ", args) },
-                    new Context { WorkingDirectory = ".", LogFile = "Log" });
+                    new ProcessFactory(),
+                    new Command { 
+                        FileName = executable, 
+                        Arguments = string.Join(" ", args) },
+                    new Context {
+                        WorkingDirectory = ".", 
+                        LogFile = "Log" , 
+                        OutputHandlers = new IOutputHandler[] { new TextOutputHandler(Console.Out, Console.Error) } } );
+
             invokeBuildExe.Run();
         }
     }

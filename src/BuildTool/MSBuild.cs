@@ -1,4 +1,6 @@
-﻿namespace BuildTool
+﻿using System;
+
+namespace BuildTool
 {
     public class MSBuild: IOutputHandler
     {
@@ -19,7 +21,19 @@
 
         private ProcessRunner CreateMSBuildProcess(string projectFile)
         {
-            return new ProcessRunner(new Command { FileName = msBuildExeFile, Arguments = projectFile },new Context{ WorkingDirectory = ".", LogFile="Log.txt"}, this);
+            return new ProcessRunner(
+                new ProcessFactory(),
+                new Command { 
+                    FileName = msBuildExeFile, 
+                    Arguments = projectFile },
+                new Context{ 
+                    WorkingDirectory = ".", 
+                    LogFile="Log.txt", 
+                    OutputHandlers = new IOutputHandler[] {
+                        new TextOutputHandler(
+                            Console.Out, 
+                            Console.Error),
+                        this }});
         }
 
         public string Run()

@@ -39,11 +39,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrap.cs" />
+    <Compile Include="ConsoleOutputHandler.cs" />
     <Compile Include="Context.cs" />
     <Compile Include="IOutputHandler.cs" />
+    <Compile Include="IProcessFactory.cs" />
     <Compile Include="IProcessWrapper.cs" />
     <Compile Include="MSBuild.cs" />
     <Compile Include="Command.cs" />
+    <Compile Include="ProcessFactory.cs" />
     <Compile Include="ProcessRunner.cs" />
     <Compile Include="ProcessWrapper.cs" />
     <Compile Include="Program.cs" />

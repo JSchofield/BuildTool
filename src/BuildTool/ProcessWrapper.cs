@@ -1,4 +1,6 @@
 ﻿using System.Diagnostics;
+using System.Linq;
+using System;
 
 namespace BuildTool
 {
@@ -6,28 +8,28 @@ namespace BuildTool
     {
         private Command _info;
         private string _workingDir;
-        private IOutputHandler _outputHandler;
+        private IOutputHandler[] _outputHandlers;
 
-        public ProcessWrapper(Command info, string workingDir, IOutputHandler outputHandler)
+        public ProcessWrapper(Command info, string workingDir, params IOutputHandler[] outputHandlers)
         {
             _info = info;
             _workingDir = workingDir;
-            _outputHandler = outputHandler;
+            _outputHandlers = outputHandlers;
         }
 
         private void ReceiveError(object sender, DataReceivedEventArgs e)
         {
-            _outputHandler.ReceiveError(e.Data);
+            foreach (var handler in _outputHandlers) { handler.ReceiveError(e.Data); }
         }
 
         private void ReceiveOutput(object sender, DataReceivedEventArgs e)
         {
-            _outputHandler.ReceiveOutput(e.Data);
+            foreach (var handler in _outputHandlers) { handler.ReceiveOutput(e.Data); }
         }
 
         public int RunAndWaitForExit()
         {
-            _outputHandler.Starting(_info);
+            foreach (var handler in _outputHandlers) { handler.Starting(_info); }
 
             int exitCode;
             using (Process process = CreateProcess())
@@ -40,7 +42,7 @@ namespace BuildTool
                 process.WaitForExit();
                 exitCode = process.ExitCode;
             }
-            _outputHandler.Ending(exitCode);
+            foreach (var handler in _outputHandlers) { handler.Ending(exitCode); }
             return exitCode;
         }
 
