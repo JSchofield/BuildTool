@@ -36,8 +36,7 @@ namespace BuildTool
             Console.WriteLine(string.Format("{0} {1}", executable, args[0]));
 
             var invokeBuildExe =
-                new ProcessRunner(
-                    new ProcessFactory(),
+                    new ProcessFactory().GetProcess(
                     new Command { 
                         FileName = executable, 
                         Arguments = string.Join(" ", args) },
@@ -46,7 +45,7 @@ namespace BuildTool
                         LogFile = "Log" , 
                         OutputHandlers = new IOutputHandler[] { new TextOutputHandler(Console.Out, Console.Error) } } );
 
-            invokeBuildExe.Run();
+            invokeBuildExe.RunAndWaitForExit();
         }
     }
 }

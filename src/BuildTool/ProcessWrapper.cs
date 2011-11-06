@@ -1,18 +1,17 @@
-﻿using System.Diagnostics;
-using System.Linq;
-using System;
+﻿using System;
+using System.Diagnostics;
 
 namespace BuildTool
 {
     public class ProcessWrapper : IProcessWrapper
     {
-        private Command _info;
+        private Command _command;
         private string _workingDir;
         private IOutputHandler[] _outputHandlers;
 
-        public ProcessWrapper(Command info, string workingDir, params IOutputHandler[] outputHandlers)
+        public ProcessWrapper(Command command, string workingDir, params IOutputHandler[] outputHandlers)
         {
-            _info = info;
+            _command = command;
             _workingDir = workingDir;
             _outputHandlers = outputHandlers;
         }
@@ -29,7 +28,7 @@ namespace BuildTool
 
         public int RunAndWaitForExit()
         {
-            foreach (var handler in _outputHandlers) { handler.Starting(_info); }
+            foreach (var handler in _outputHandlers) { handler.Starting(_command); }
 
             int exitCode;
             using (Process process = CreateProcess())
@@ -51,8 +50,8 @@ namespace BuildTool
             Process process =
                 new Process() {
                     StartInfo = new ProcessStartInfo {
-                        FileName = _info.FileName,
-                        Arguments = _info.Arguments,
+                        FileName = _command.FileName,
+                        Arguments = _command.Arguments,
                         WorkingDirectory = _workingDir,
                         RedirectStandardError = true,
                         RedirectStandardOutput = true,

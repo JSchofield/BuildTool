@@ -47,7 +47,6 @@
     <Compile Include="MSBuild.cs" />
     <Compile Include="Command.cs" />
     <Compile Include="ProcessFactory.cs" />
-    <Compile Include="ProcessRunner.cs" />
     <Compile Include="ProcessWrapper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
