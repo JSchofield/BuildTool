@@ -4,12 +4,14 @@ namespace BuildTool
 {
     public class ProcessWrapper : IProcessWrapper
     {
-        private ProcessInfo _info;
+        private Command _info;
+        private string _workingDir;
         private IOutputHandler _outputHandler;
 
-        public ProcessWrapper(ProcessInfo info, IOutputHandler outputHandler)
+        public ProcessWrapper(Command info, string workingDir, IOutputHandler outputHandler)
         {
             _info = info;
+            _workingDir = workingDir;
             _outputHandler = outputHandler;
         }
 
@@ -23,17 +25,23 @@ namespace BuildTool
             _outputHandler.ReceiveOutput(e.Data);
         }
 
-        public void RunAndWaitForExit()
+        public int RunAndWaitForExit()
         {
-            Process process = CreateProcess();
+            _outputHandler.Starting(_info);
 
-            process.Start();
+            int exitCode;
+            using (Process process = CreateProcess())
+            {
+                process.Start();
 
-            process.BeginErrorReadLine();
-            process.BeginOutputReadLine();
+                process.BeginErrorReadLine();
+                process.BeginOutputReadLine();
 
-            process.WaitForExit();
-            process.Close();
+                process.WaitForExit();
+                exitCode = process.ExitCode;
+            }
+            _outputHandler.Ending(exitCode);
+            return exitCode;
         }
 
         private Process CreateProcess()
@@ -43,7 +51,7 @@ namespace BuildTool
                     StartInfo = new ProcessStartInfo {
                         FileName = _info.FileName,
                         Arguments = _info.Arguments,
-                        WorkingDirectory = _info.WorkingDirectory,
+                        WorkingDirectory = _workingDir,
                         RedirectStandardError = true,
                         RedirectStandardOutput = true,
                         UseShellExecute = false } };

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BuildTool
+﻿namespace BuildTool
 {
     public class MSBuild: IOutputHandler
     {
@@ -21,7 +19,7 @@ namespace BuildTool
 
         private ProcessRunner CreateMSBuildProcess(string projectFile)
         {
-            return new ProcessRunner(new ProcessInfo { FileName = msBuildExeFile, Arguments = projectFile, WorkingDirectory = "." }, this);
+            return new ProcessRunner(new Command { FileName = msBuildExeFile, Arguments = projectFile },new Context{ WorkingDirectory = ".", LogFile="Log.txt"}, this);
         }
 
         public string Run()
@@ -30,7 +28,11 @@ namespace BuildTool
             return _compileOutput;
         }
 
-        public void ReceiveOutput(string output)
+        void IOutputHandler.Starting(Command info)
+        {
+        }
+
+        void IOutputHandler.ReceiveOutput(string output)
         {
             // Analyse output to get the path to the binary
             if (_outputFilesBeingCopied)
@@ -49,7 +51,11 @@ namespace BuildTool
             }
         }
 
-        public void ReceiveError(string error)
+        void IOutputHandler.ReceiveError(string error)
+        {
+        }
+
+        void IOutputHandler.Ending(int exitCode)
         {
         }
     }

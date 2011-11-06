@@ -1,48 +1,73 @@
 ﻿using System;
+using System.IO;
 
 namespace BuildTool
 {
+
     public class ProcessRunner: IOutputHandler
     {
-        private readonly ProcessInfo _processInfo;
-        private readonly string _arguments;
+        private readonly Command _processInfo;
+        private readonly Context _context;
         private readonly IOutputHandler[] _outputHandlers;
         private int _linecount;
 
-        public ProcessRunner(ProcessInfo processInfo, params IOutputHandler[] outputHandlers)
+        public ProcessRunner(Command processInfo, Context context, params IOutputHandler[] outputHandlers)
         {
             if (string.IsNullOrEmpty(processInfo.FileName))
             {
                 throw new ArgumentException("FileName cannot be null or empty.");
             }
             _processInfo = processInfo;
+            _context = context;
             _outputHandlers = outputHandlers;
         }
         
-        public void Run()
+        public int Run()
         {
             _linecount = 0;
 
-            IProcessWrapper process = new ProcessWrapper(_processInfo, this);
-            process.RunAndWaitForExit();
+            IProcessWrapper process = new ProcessWrapper(_processInfo, _context.WorkingDirectory, this);
+            return process.RunAndWaitForExit();
         }
 
-        public void ReceiveOutput(string output)
+        void IOutputHandler.Starting(Command info)
         {
+            Console.WriteLine("STARTING PROCESS");
+            Console.WriteLine(string.Format("CMD: {0} {1}", info.FileName, info.Arguments));
+            Console.WriteLine(string.Format("DIR: {0}", _context.WorkingDirectory));
+            Console.WriteLine(string.Format("LOG: {0}", _context.LogFile));
+            Console.WriteLine("-------------------------------------------------------------------------------------");
+            foreach (var handler in _outputHandlers)
+            {
+                handler.Starting(info);
+            }
+        }
+
+        void IOutputHandler.ReceiveOutput(string output)
+        {
+            Console.WriteLine(string.Format("{0}: {1}", _linecount++, output));
             foreach (var handler in _outputHandlers)
             {
                 handler.ReceiveOutput(output);
             }
-            Console.WriteLine(string.Format("{0}: {1}", _linecount++, output));
         }
 
-        public void ReceiveError(string error)
+        void IOutputHandler.ReceiveError(string error)
         {
+            Console.WriteLine(string.Format("{0} ERROR: {1}", _linecount++, error));
             foreach (var handler in _outputHandlers)
             {
                 handler.ReceiveError(error);
             }
-            Console.WriteLine(string.Format("{0} ERROR: {1}", _linecount++, error));
+        }
+
+        void IOutputHandler.Ending(int exitCode)
+        {
+            Console.WriteLine(string.Format("EXITED WITH CODE {0}", exitCode));
+            foreach (var handler in _outputHandlers)
+            {
+                handler.Ending(exitCode);
+            }
         }
     }
 }

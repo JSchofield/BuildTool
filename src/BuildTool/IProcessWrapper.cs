@@ -2,6 +2,6 @@
 {
     public interface IProcessWrapper
     {
-        void RunAndWaitForExit();
+        int RunAndWaitForExit();
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Diagnostics;
-
-namespace BuildTool.Bootstrap
+﻿namespace BuildTool.Bootstrap
 {
     public class Program
     {
