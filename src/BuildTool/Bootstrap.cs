@@ -20,7 +20,7 @@ namespace BuildTool
             }
             catch(Exception e)
             {
-                Console.WriteLine("ERROR:" + e.Message);
+                Console.WriteLine("BOOTSTRAP ERROR:" + e.Message);
             }
             Console.ReadLine();
         }
@@ -33,17 +33,19 @@ namespace BuildTool
 
         private void InvokeBuildExecutable(string executable, string[] args)
         {
-            Console.WriteLine(string.Format("{0} {1}", executable, args[0]));
-
             var invokeBuildExe =
-                    new ProcessFactory().GetProcess(
+                new ProcessFactory().CreateProcess(
                     new Command { 
                         FileName = executable, 
                         Arguments = string.Join(" ", args) },
                     new Context {
                         WorkingDirectory = ".", 
                         LogFile = "Log" , 
-                        OutputHandlers = new IOutputHandler[] { new TextOutputHandler(Console.Out, Console.Error) } } );
+                        OutputHandlers =
+                            new IOutputHandler[] {
+                                new TransparantOutputHandler(
+                                    Console.Out,
+                                    Console.Error) } } );
 
             invokeBuildExe.RunAndWaitForExit();
         }

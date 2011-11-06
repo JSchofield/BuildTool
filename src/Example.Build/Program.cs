@@ -9,7 +9,7 @@ namespace Example.Build
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("This is Example.Build running");
+            Console.WriteLine("Starting Example.Build");
 
             var build = new MSBuild(GetTargetProject(args[0], "Example.Target"));
             var output = build.Run();

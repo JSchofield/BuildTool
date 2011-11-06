@@ -23,18 +23,18 @@ namespace BuildTool
         {
 
             return 
-                new ProcessFactory().GetProcess(
-                new Command { 
-                    FileName = msBuildExeFile, 
-                    Arguments = projectFile },
-                new Context{ 
-                    WorkingDirectory = ".", 
-                    LogFile="Log.txt", 
-                    OutputHandlers = new IOutputHandler[] {
-                        new TextOutputHandler(
-                            Console.Out, 
-                            Console.Error),
-                        this}});
+                new ProcessFactory().CreateProcess(
+                    new Command { 
+                        FileName = msBuildExeFile, 
+                        Arguments = projectFile },
+                    new Context{ 
+                        WorkingDirectory = ".", 
+                        LogFile = "Log.txt", 
+                        OutputHandlers = new IOutputHandler[] {
+                            new TextOutputHandler(
+                                Console.Out, 
+                                Console.Error),
+                            this}});
         }
 
         public string Run()

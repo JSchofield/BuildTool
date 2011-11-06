@@ -2,6 +2,6 @@
 {
     public interface IProcessFactory
     {
-        IProcessWrapper GetProcess(Command command, Context context);
+        IProcessWrapper CreateProcess(Command command, Context context);
     }
 }
