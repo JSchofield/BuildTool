@@ -7,21 +7,22 @@ namespace BuildTool
         private const string msBuildExeFile = @"C:\Windows\Microsoft.NET\Framework\v4.0.30319\msbuild.exe";
         private readonly string _projectFile;
         private readonly IProcessWrapper _process;
+        private readonly Context _context;
 
         private string _compileOutput;
 
         // State variable to keep track of when MSBuild is copying the final file
         private bool _outputFilesBeingCopied = false;
 
-        public MSBuild(string projectFile)
+        public MSBuild(Context context, string projectFile)
         {
             _projectFile = projectFile;
             _process = CreateMSBuildProcess(projectFile);
+            _context = context;
         }
 
         private IProcessWrapper CreateMSBuildProcess(string projectFile)
         {
-
             return 
                 new ProcessFactory().CreateProcess(
                     new Command { 
@@ -31,7 +32,7 @@ namespace BuildTool
                         WorkingDirectory = ".", 
                         LogFile = "Log.txt", 
                         OutputHandlers = new IOutputHandler[] {
-                            new TextOutputHandler(
+                            new LineNumberingOutputHandler(
                                 Console.Out, 
                                 Console.Error),
                             this}});

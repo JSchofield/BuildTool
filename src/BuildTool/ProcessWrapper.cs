@@ -26,15 +26,6 @@ namespace BuildTool
             foreach (var handler in _outputHandlers) { handler.ReceiveOutput(e.Data); }
         }
 
-        public void Run()
-        {
-            foreach (var handler in _outputHandlers) { handler.Starting(_command); }
-
-            Process process = CreateProcess();
-            process.Start();
-            Console.WriteLine("started");
-        }
-
         public int RunAndWaitForExit()
         {
             foreach (var handler in _outputHandlers) { handler.Starting(_command); }
