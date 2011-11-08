@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace BuildTool
@@ -7,9 +8,9 @@ namespace BuildTool
     {
         private Command _command;
         private string _workingDir;
-        private IOutputHandler[] _outputHandlers;
+        private IList<IOutputHandler> _outputHandlers;
 
-        public ProcessWrapper(Command command, string workingDir, params IOutputHandler[] outputHandlers)
+        public ProcessWrapper(Command command, string workingDir, IList<IOutputHandler> outputHandlers)
         {
             _command = command;
             _workingDir = workingDir;
@@ -26,12 +27,20 @@ namespace BuildTool
             foreach (var handler in _outputHandlers) { handler.ReceiveOutput(e.Data); }
         }
 
+        public void RunStandalone()
+        {
+            using (Process process = CreateProcess(true))
+            {
+                process.Start();
+            }
+        }
+
         public int RunAndWaitForExit()
         {
             foreach (var handler in _outputHandlers) { handler.Starting(_command); }
 
             int exitCode;
-            using (Process process = CreateProcess())
+            using (Process process = CreateProcess(false))
             {
                 process.Start();
 
@@ -45,7 +54,7 @@ namespace BuildTool
             return exitCode;
         }
 
-        private Process CreateProcess()
+        private Process CreateProcess(bool shell)
         {
             Process process =
                 new Process() {
@@ -53,12 +62,15 @@ namespace BuildTool
                         FileName = _command.FileName,
                         Arguments = _command.Arguments,
                         WorkingDirectory = _workingDir,
-                        RedirectStandardError = true,
-                        RedirectStandardOutput = true,
-                        UseShellExecute = false } };
+                        RedirectStandardError = !shell,
+                        RedirectStandardOutput = !shell,
+                        UseShellExecute = shell } };
 
-            process.ErrorDataReceived += new DataReceivedEventHandler(ReceiveError);
-            process.OutputDataReceived += new DataReceivedEventHandler(ReceiveOutput);
+            if (!shell)
+            {
+                process.ErrorDataReceived += new DataReceivedEventHandler(ReceiveError);
+                process.OutputDataReceived += new DataReceivedEventHandler(ReceiveOutput);
+            }
 
             return process;
         }

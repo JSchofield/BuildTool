@@ -1,9 +1,17 @@
-﻿namespace BuildTool
+﻿using System.Collections.Generic;
+
+namespace BuildTool
 {
-    public class Context
+    public struct Context
     {
         public string WorkingDirectory { get; set; }
-        public string LogFile { get; set; }
-        public IOutputHandler[] OutputHandlers { get; set; }
+        public List<IOutputHandler> OutputHandlers;
+
+        static public Context Default()
+        {
+            return new Context {
+                WorkingDirectory = ".",
+                OutputHandlers = new List<IOutputHandler>() };
+        }
     }
 }
