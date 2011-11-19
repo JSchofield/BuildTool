@@ -1,0 +1,8 @@
+﻿OUT: MockProcess Running Now
+WAIT: 5000
+OUT: Some more output
+ERR: This is an error
+REM: This is just a comment
+IN:
+REM: Waited for a line of input
+REM: Finish when there are no more instructions
