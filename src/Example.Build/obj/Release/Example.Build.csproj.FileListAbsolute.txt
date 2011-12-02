@@ -10,3 +10,5 @@ C:\Users\jon\BuildTool\src\Example.Build\obj\Release\ResolveAssemblyReference.ca
 C:\Users\jon\BuildTool\src\Example.Build\bin\Release\BuildTool.exe
 C:\Users\jon\BuildTool\src\Example.Build\bin\Release\Example.Build.exe
 C:\Users\jon\BuildTool\src\Example.Build\obj\Release\Example.Build.exe
+C:\Users\jon\BuildTool\src\Example.Build\bin\Release\Example.Build.pdb
+C:\Users\jon\BuildTool\src\Example.Build\obj\Release\Example.Build.pdb

@@ -5,16 +5,16 @@ namespace MockProcess.Instructions
 {
     public class WaitInstruction : IInstruction
     {
-        private int _milliseconds;
+        public int Milliseconds { get; private set; }
 
         public WaitInstruction(int milliseconds)
         {
-            this._milliseconds = milliseconds;
+            this.Milliseconds = milliseconds;
         }
 
         public void Run()
         {
-            Thread.Sleep(_milliseconds);
+            Thread.Sleep(Milliseconds);
         }
     }
 }

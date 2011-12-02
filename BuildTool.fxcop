@@ -1,0 +1,995 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FxCopProject Version="10.0" Name="BuildTool">
+ <ProjectOptions>
+  <SharedProject>True</SharedProject>
+  <Stylesheet Apply="False">$(FxCopDir)\Xml\FxCopReport.xsl</Stylesheet>
+  <SaveMessages>
+   <Project Status="Active, Excluded" NewOnly="False" />
+   <Report Status="Active" NewOnly="False" />
+  </SaveMessages>
+  <ProjectFile Compress="True" DefaultTargetCheck="True" DefaultRuleCheck="True" SaveByRuleGroup="" Deterministic="True" />
+  <EnableMultithreadedLoad>True</EnableMultithreadedLoad>
+  <EnableMultithreadedAnalysis>True</EnableMultithreadedAnalysis>
+  <SourceLookup>True</SourceLookup>
+  <AnalysisExceptionsThreshold>10</AnalysisExceptionsThreshold>
+  <RuleExceptionsThreshold>1</RuleExceptionsThreshold>
+  <Spelling Locale="en-US" />
+  <OverrideRuleVisibilities>False</OverrideRuleVisibilities>
+  <CustomDictionaries SearchFxCopDir="True" SearchUserProfile="True" SearchProjectDir="True" />
+  <SearchGlobalAssemblyCache>False</SearchGlobalAssemblyCache>
+  <DeadlockDetectionTimeout>120</DeadlockDetectionTimeout>
+  <IgnoreGeneratedCode>False</IgnoreGeneratedCode>
+ </ProjectOptions>
+ <Targets>
+  <Target Name="$(ProjectDir)/src/BuildTool.Tests/bin/Release/BuildTool.Tests.dll" Analyze="True" AnalyzeAllChildren="True" />
+  <Target Name="$(ProjectDir)/src/BuildTool/bin/Release/BuildTool.exe" Analyze="True" AnalyzeAllChildren="True" />
+  <Target Name="$(ProjectDir)/src/Example.Build/bin/Release/Example.Build.exe" Analyze="True" AnalyzeAllChildren="True" />
+  <Target Name="$(ProjectDir)/src/Example.Target/bin/Release/Example.Target.dll" Analyze="True" AnalyzeAllChildren="True" />
+  <Target Name="$(ProjectDir)/src/Example.Tests/bin/Release/Example.Tests.dll" Analyze="True" AnalyzeAllChildren="True" />
+  <Target Name="$(ProjectDir)/src/MockProcess.Tests/bin/Release/MockProcess.Tests.dll" Analyze="True" AnalyzeAllChildren="True" />
+  <Target Name="$(ProjectDir)/src/MockProcess/bin/Release/MockProcess.exe" Analyze="True" AnalyzeAllChildren="True" />
+ </Targets>
+ <Rules>
+  <RuleFiles>
+   <RuleFile Name="$(FxCopDir)\Rules\DesignRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\GlobalizationRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\InteroperabilityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\MobilityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\NamingRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\PerformanceRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\PortabilityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\SecurityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\SecurityTransparencyRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\UsageRules.dll" Enabled="True" AllRulesEnabled="True" />
+  </RuleFiles>
+  <Groups />
+  <Settings />
+ </Rules>
+ <FxCopReport Version="10.0">
+  <Targets>
+   <Target Name="$(ProjectDir)/src/BuildTool.Tests/bin/Release/BuildTool.Tests.dll">
+    <Modules>
+     <Module Name="buildtool.tests.dll">
+      <Messages>
+       <Message TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210" Created="2011-11-19 19:47:26Z">
+        <Issue Name="NoStrongName">
+         <Item>'BuildTool.Tests.dll'</Item>
+        </Issue>
+       </Message>
+       <Message TypeName="MarkAssembliesWithClsCompliant" Category="Microsoft.Design" CheckId="CA1014" Created="2011-11-19 19:47:26Z">
+        <Issue>
+         <Item>'BuildTool.Tests.dll'</Item>
+        </Issue>
+       </Message>
+      </Messages>
+      <Namespaces>
+       <Namespace Name="BuildTool.Tests">
+        <Types>
+         <Type Name="MSBuildTests">
+          <Messages>
+           <Message TypeName="AvoidUninstantiatedInternalClasses" Category="Microsoft.Performance" CheckId="CA1812" Created="2011-11-19 19:47:26Z">
+            <Issue>
+             <Item>'MSBuildTests'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="TextOutputHandler">
+          <Messages>
+           <Message TypeName="AvoidUninstantiatedInternalClasses" Category="Microsoft.Performance" CheckId="CA1812" Created="2011-11-19 19:47:26Z">
+            <Issue>
+             <Item>'TextOutputHandler'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+         </Type>
+        </Types>
+       </Namespace>
+      </Namespaces>
+     </Module>
+    </Modules>
+   </Target>
+   <Target Name="$(ProjectDir)/src/BuildTool/bin/Release/BuildTool.exe">
+    <Modules>
+     <Module Name="buildtool.exe">
+      <Messages>
+       <Message TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210" Created="2011-11-19 19:47:26Z">
+        <Issue Name="NoStrongName">
+         <Item>'BuildTool.exe'</Item>
+        </Issue>
+       </Message>
+       <Message TypeName="MarkAssembliesWithClsCompliant" Category="Microsoft.Design" CheckId="CA1014" Created="2011-11-19 19:47:26Z">
+        <Issue>
+         <Item>'BuildTool.exe'</Item>
+        </Issue>
+       </Message>
+      </Messages>
+      <Namespaces>
+       <Namespace Name="BuildTool">
+        <Types>
+         <Type Name="Bootstrapper">
+          <Messages>
+           <Message TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063" Created="2011-11-19 19:47:26Z">
+            <Issue Name="ProvideDisposeBool">
+             <Item>'Bootstrapper'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#Dispose()">
+            <Messages>
+             <Message TypeName="CallGCSuppressFinalizeCorrectly" Category="Microsoft.Usage" CheckId="CA1816" Created="2011-11-19 19:47:26Z">
+              <Issue Name="NotCalled">
+               <Item>'Bootstrapper.Dispose()'</Item>
+               <Item>'GC.SuppressFinalize(object)'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063" Created="2011-11-19 19:47:26Z">
+              <Issue Name="DisposeImplementation">
+               <Item>'Bootstrapper.Dispose()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#RunBuild()">
+            <Messages>
+             <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Created="2011-11-19 19:47:26Z">
+              <Issue>
+               <Item>'Bootstrapper.RunBuild()'</Item>
+               <Item>'Exception'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="Context">
+          <Messages>
+           <Message TypeName="OverrideEqualsAndOperatorEqualsOnValueTypes" Category="Microsoft.Performance" CheckId="CA1815" Created="2011-11-19 19:47:26Z">
+            <Issue Name="Equals">
+             <Item>'Context'</Item>
+            </Issue>
+            <Issue Name="op_Equality">
+             <Item>'Context'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#OutputHandlers">
+            <Messages>
+             <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Created="2011-11-19 19:47:26Z">
+              <Issue>
+               <Item>'Context.OutputHandlers'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Created="2011-11-19 19:47:26Z">
+              <Issue>
+               <Item>'List&lt;IOutputHandler&gt;'</Item>
+               <Item>'Context.OutputHandlers'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="FileOutputHandler">
+          <Messages>
+           <Message TypeName="StaticHolderTypesShouldNotHaveConstructors" Category="Microsoft.Design" CheckId="CA1053" Created="2011-11-19 19:47:26Z">
+            <Issue>
+             <Item>'FileOutputHandler'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="HtmlOutputHandler">
+          <Members>
+           <Member Name="#hasEnded">
+            <Messages>
+             <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Created="2011-11-19 19:47:26Z">
+              <Issue>
+               <Item>'HtmlOutputHandler.hasEnded'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#hasStarted">
+            <Messages>
+             <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Created="2011-11-19 19:47:26Z">
+              <Issue>
+               <Item>'HtmlOutputHandler.hasStarted'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="IOutputHandler">
+          <Members>
+           <Member Name="#ReceiveError(System.String)">
+            <Messages>
+             <Message Id="Error" TypeName="IdentifiersShouldNotMatchKeywords" Category="Microsoft.Naming" CheckId="CA1716" Created="2011-11-19 19:47:26Z">
+              <Issue Name="MemberParameter">
+               <Item>'IOutputHandler.ReceiveError(string)'</Item>
+               <Item>'error'</Item>
+               <Item>Error</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="LineNumberingOutputHandler">
+          <Members>
+           <Member Name="#Ending(System.Int32)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-11-19 19:47:26Z">
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'LineNumberingOutputHandler.Ending(int)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#ReceiveError(System.String)">
+            <Messages>
+             <Message Id="System.Int32.ToString(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-11-19 19:47:26Z">
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'int.ToString(string)'</Item>
+               <Item>'LineNumberingOutputHandler.ReceiveError(string)'</Item>
+               <Item>'int.ToString(string, IFormatProvider)'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-11-19 19:47:26Z">
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object, object)'</Item>
+               <Item>'LineNumberingOutputHandler.ReceiveError(string)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#ReceiveOutput(System.String)">
+            <Messages>
+             <Message Id="System.Int32.ToString(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-11-19 19:47:26Z">
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'int.ToString(string)'</Item>
+               <Item>'LineNumberingOutputHandler.ReceiveOutput(string)'</Item>
+               <Item>'int.ToString(string, IFormatProvider)'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-11-19 19:47:26Z">
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object, object)'</Item>
+               <Item>'LineNumberingOutputHandler.ReceiveOutput(string)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Starting(BuildTool.Command)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-11-19 19:47:26Z">
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object, object)'</Item>
+               <Item>'LineNumberingOutputHandler.Starting(Command)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="MSBuildLog">
+          <Messages>
+           <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Created="2011-11-19 19:47:26Z" FixCategory="DependsOnFix">
+            <Issue Name="DependsOnFix">
+             <Item>'MSBuildLog'</Item>
+             <Item>'StreamWriter'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#_streamWriter">
+            <Messages>
+             <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Created="2011-11-19 19:47:26Z">
+              <Issue>
+               <Item>'MSBuildLog._streamWriter'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Builds">
+            <Messages>
+             <Message TypeName="CollectionPropertiesShouldBeReadOnly" Category="Microsoft.Usage" CheckId="CA2227" Created="2011-11-19 19:47:26Z">
+              <Issue>
+               <Item>'MSBuildLog.Builds'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#BuildStarted(System.Object,Microsoft.Build.Framework.BuildStartedEventArgs)">
+            <Messages>
+             <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2011-11-19 19:47:26Z">
+              <Issue>
+               <Item>'MSBuildLog.BuildStarted(object, BuildStartedEventArgs)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Errors">
+            <Messages>
+             <Message TypeName="CollectionPropertiesShouldBeReadOnly" Category="Microsoft.Usage" CheckId="CA2227" Created="2011-11-19 19:47:26Z">
+              <Issue>
+               <Item>'MSBuildLog.Errors'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#MessageRaised(System.Object,Microsoft.Build.Framework.BuildMessageEventArgs)">
+            <Messages>
+             <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2011-11-19 19:47:26Z">
+              <Issue>
+               <Item>'MSBuildLog.MessageRaised(object, BuildMessageEventArgs)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Projects">
+            <Messages>
+             <Message TypeName="CollectionPropertiesShouldBeReadOnly" Category="Microsoft.Usage" CheckId="CA2227" Created="2011-11-19 19:47:26Z">
+              <Issue>
+               <Item>'MSBuildLog.Projects'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#ProjectStarted(System.Object,Microsoft.Build.Framework.ProjectStartedEventArgs)">
+            <Messages>
+             <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2011-11-19 19:47:26Z">
+              <Issue>
+               <Item>'MSBuildLog.ProjectStarted(object, ProjectStartedEventArgs)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#StatusEventRaised(System.Object,Microsoft.Build.Framework.BuildStatusEventArgs)">
+            <Messages>
+             <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2011-11-19 19:47:26Z">
+              <Issue>
+               <Item>'MSBuildLog.StatusEventRaised(object, BuildStatusEventArgs)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#TargetFinished(System.Object,Microsoft.Build.Framework.TargetFinishedEventArgs)">
+            <Messages>
+             <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2011-11-19 19:47:26Z">
+              <Issue>
+               <Item>'MSBuildLog.TargetFinished(object, TargetFinishedEventArgs)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#TargetStarted(System.Object,Microsoft.Build.Framework.TargetStartedEventArgs)">
+            <Messages>
+             <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2011-11-19 19:47:26Z">
+              <Issue>
+               <Item>'MSBuildLog.TargetStarted(object, TargetStartedEventArgs)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#TaskFinished(System.Object,Microsoft.Build.Framework.TaskFinishedEventArgs)">
+            <Messages>
+             <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2011-11-19 19:47:26Z">
+              <Issue>
+               <Item>'MSBuildLog.TaskFinished(object, TaskFinishedEventArgs)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#TaskStarted(System.Object,Microsoft.Build.Framework.TaskStartedEventArgs)">
+            <Messages>
+             <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2011-11-19 19:47:26Z">
+              <Issue>
+               <Item>'MSBuildLog.TaskStarted(object, TaskStartedEventArgs)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Warnings">
+            <Messages>
+             <Message TypeName="CollectionPropertiesShouldBeReadOnly" Category="Microsoft.Usage" CheckId="CA2227" Created="2011-11-19 19:47:26Z">
+              <Issue>
+               <Item>'MSBuildLog.Warnings'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="MSBuildOutputHandler">
+          <Members>
+           <Member Name="#BuildTool.IOutputHandler.Ending(System.Int32)">
+            <Messages>
+             <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Created="2011-11-19 19:47:26Z">
+              <Issue>
+               <Item>'MSBuildOutputHandler'</Item>
+               <Item>'IOutputHandler.Ending(int)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#BuildTool.IOutputHandler.ReceiveError(System.String)">
+            <Messages>
+             <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Created="2011-11-19 19:47:26Z">
+              <Issue>
+               <Item>'MSBuildOutputHandler'</Item>
+               <Item>'IOutputHandler.ReceiveError(string)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#BuildTool.IOutputHandler.ReceiveOutput(System.String)">
+            <Messages>
+             <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Created="2011-11-19 19:47:26Z">
+              <Issue>
+               <Item>'MSBuildOutputHandler'</Item>
+               <Item>'IOutputHandler.ReceiveOutput(string)'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.String.IndexOf(System.String)" TypeName="SpecifyStringComparison" Category="Microsoft.Globalization" CheckId="CA1307" Created="2011-11-19 19:47:26Z">
+              <Issue>
+               <Item>'string.IndexOf(string)'</Item>
+               <Item>'MSBuildOutputHandler.IOutputHandler.ReceiveOutput(string)'</Item>
+               <Item>'string.IndexOf(string, StringComparison)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#BuildTool.IOutputHandler.Starting(BuildTool.Command)">
+            <Messages>
+             <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Created="2011-11-19 19:47:26Z">
+              <Issue>
+               <Item>'MSBuildOutputHandler'</Item>
+               <Item>'IOutputHandler.Starting(Command)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="ProcessWrapper">
+          <Members>
+           <Member Name="#CreateProcess(System.Boolean)">
+            <Messages>
+             <Message TypeName="DoNotIndirectlyExposeMethodsWithLinkDemands" Category="Microsoft.Security" CheckId="CA2122" Created="2011-11-19 19:47:26Z">
+              <Issue>
+               <Item>'ProcessWrapper.CreateProcess(bool)'</Item>
+               <Item>'Process.ErrorDataReceived.add(DataReceivedEventHandler)'</Item>
+               <Item>&#xD;&#xA;   -&gt;'ProcessWrapper.CreateProcess(bool)'&#xD;&#xA;   -&gt;'ProcessWrapper.CreateProcess(bool)'&#xD;&#xA;   -&gt;'ProcessWrapper.RunAndWaitForExit()'</Item>
+              </Issue>
+              <Issue>
+               <Item>'ProcessWrapper.CreateProcess(bool)'</Item>
+               <Item>'Process.ErrorDataReceived.add(DataReceivedEventHandler)'</Item>
+               <Item>&#xD;&#xA;   -&gt;'ProcessWrapper.CreateProcess(bool)'&#xD;&#xA;   -&gt;'ProcessWrapper.CreateProcess(bool)'&#xD;&#xA;   -&gt;'ProcessWrapper.RunStandalone()'</Item>
+              </Issue>
+              <Issue>
+               <Item>'ProcessWrapper.CreateProcess(bool)'</Item>
+               <Item>'Process.OutputDataReceived.add(DataReceivedEventHandler)'</Item>
+               <Item>&#xD;&#xA;   -&gt;'ProcessWrapper.CreateProcess(bool)'&#xD;&#xA;   -&gt;'ProcessWrapper.CreateProcess(bool)'&#xD;&#xA;   -&gt;'ProcessWrapper.RunAndWaitForExit()'</Item>
+              </Issue>
+              <Issue>
+               <Item>'ProcessWrapper.CreateProcess(bool)'</Item>
+               <Item>'Process.OutputDataReceived.add(DataReceivedEventHandler)'</Item>
+               <Item>&#xD;&#xA;   -&gt;'ProcessWrapper.CreateProcess(bool)'&#xD;&#xA;   -&gt;'ProcessWrapper.CreateProcess(bool)'&#xD;&#xA;   -&gt;'ProcessWrapper.RunStandalone()'</Item>
+              </Issue>
+              <Issue>
+               <Item>'ProcessWrapper.CreateProcess(bool)'</Item>
+               <Item>'Process.StartInfo.set(ProcessStartInfo)'</Item>
+               <Item>&#xD;&#xA;   -&gt;'ProcessWrapper.CreateProcess(bool)'&#xD;&#xA;   -&gt;'ProcessWrapper.CreateProcess(bool)'&#xD;&#xA;   -&gt;'ProcessWrapper.RunAndWaitForExit()'</Item>
+              </Issue>
+              <Issue>
+               <Item>'ProcessWrapper.CreateProcess(bool)'</Item>
+               <Item>'Process.StartInfo.set(ProcessStartInfo)'</Item>
+               <Item>&#xD;&#xA;   -&gt;'ProcessWrapper.CreateProcess(bool)'&#xD;&#xA;   -&gt;'ProcessWrapper.CreateProcess(bool)'&#xD;&#xA;   -&gt;'ProcessWrapper.RunStandalone()'</Item>
+              </Issue>
+              <Issue>
+               <Item>'ProcessWrapper.CreateProcess(bool)'</Item>
+               <Item>'ProcessStartInfo.Arguments.set(string)'</Item>
+               <Item>&#xD;&#xA;   -&gt;'ProcessWrapper.CreateProcess(bool)'&#xD;&#xA;   -&gt;'ProcessWrapper.CreateProcess(bool)'&#xD;&#xA;   -&gt;'ProcessWrapper.RunAndWaitForExit()'</Item>
+              </Issue>
+              <Issue>
+               <Item>'ProcessWrapper.CreateProcess(bool)'</Item>
+               <Item>'ProcessStartInfo.Arguments.set(string)'</Item>
+               <Item>&#xD;&#xA;   -&gt;'ProcessWrapper.CreateProcess(bool)'&#xD;&#xA;   -&gt;'ProcessWrapper.CreateProcess(bool)'&#xD;&#xA;   -&gt;'ProcessWrapper.RunStandalone()'</Item>
+              </Issue>
+              <Issue>
+               <Item>'ProcessWrapper.CreateProcess(bool)'</Item>
+               <Item>'ProcessStartInfo.FileName.set(string)'</Item>
+               <Item>&#xD;&#xA;   -&gt;'ProcessWrapper.CreateProcess(bool)'&#xD;&#xA;   -&gt;'ProcessWrapper.CreateProcess(bool)'&#xD;&#xA;   -&gt;'ProcessWrapper.RunAndWaitForExit()'</Item>
+              </Issue>
+              <Issue>
+               <Item>'ProcessWrapper.CreateProcess(bool)'</Item>
+               <Item>'ProcessStartInfo.FileName.set(string)'</Item>
+               <Item>&#xD;&#xA;   -&gt;'ProcessWrapper.CreateProcess(bool)'&#xD;&#xA;   -&gt;'ProcessWrapper.CreateProcess(bool)'&#xD;&#xA;   -&gt;'ProcessWrapper.RunStandalone()'</Item>
+              </Issue>
+              <Issue>
+               <Item>'ProcessWrapper.CreateProcess(bool)'</Item>
+               <Item>'ProcessStartInfo.RedirectStandardError.set(bool)'</Item>
+               <Item>&#xD;&#xA;   -&gt;'ProcessWrapper.CreateProcess(bool)'&#xD;&#xA;   -&gt;'ProcessWrapper.CreateProcess(bool)'&#xD;&#xA;   -&gt;'ProcessWrapper.RunAndWaitForExit()'</Item>
+              </Issue>
+              <Issue>
+               <Item>'ProcessWrapper.CreateProcess(bool)'</Item>
+               <Item>'ProcessStartInfo.RedirectStandardError.set(bool)'</Item>
+               <Item>&#xD;&#xA;   -&gt;'ProcessWrapper.CreateProcess(bool)'&#xD;&#xA;   -&gt;'ProcessWrapper.CreateProcess(bool)'&#xD;&#xA;   -&gt;'ProcessWrapper.RunStandalone()'</Item>
+              </Issue>
+              <Issue>
+               <Item>'ProcessWrapper.CreateProcess(bool)'</Item>
+               <Item>'ProcessStartInfo.RedirectStandardOutput.set(bool)'</Item>
+               <Item>&#xD;&#xA;   -&gt;'ProcessWrapper.CreateProcess(bool)'&#xD;&#xA;   -&gt;'ProcessWrapper.CreateProcess(bool)'&#xD;&#xA;   -&gt;'ProcessWrapper.RunAndWaitForExit()'</Item>
+              </Issue>
+              <Issue>
+               <Item>'ProcessWrapper.CreateProcess(bool)'</Item>
+               <Item>'ProcessStartInfo.RedirectStandardOutput.set(bool)'</Item>
+               <Item>&#xD;&#xA;   -&gt;'ProcessWrapper.CreateProcess(bool)'&#xD;&#xA;   -&gt;'ProcessWrapper.CreateProcess(bool)'&#xD;&#xA;   -&gt;'ProcessWrapper.RunStandalone()'</Item>
+              </Issue>
+              <Issue>
+               <Item>'ProcessWrapper.CreateProcess(bool)'</Item>
+               <Item>'ProcessStartInfo.UseShellExecute.set(bool)'</Item>
+               <Item>&#xD;&#xA;   -&gt;'ProcessWrapper.CreateProcess(bool)'&#xD;&#xA;   -&gt;'ProcessWrapper.CreateProcess(bool)'&#xD;&#xA;   -&gt;'ProcessWrapper.RunAndWaitForExit()'</Item>
+              </Issue>
+              <Issue>
+               <Item>'ProcessWrapper.CreateProcess(bool)'</Item>
+               <Item>'ProcessStartInfo.UseShellExecute.set(bool)'</Item>
+               <Item>&#xD;&#xA;   -&gt;'ProcessWrapper.CreateProcess(bool)'&#xD;&#xA;   -&gt;'ProcessWrapper.CreateProcess(bool)'&#xD;&#xA;   -&gt;'ProcessWrapper.RunStandalone()'</Item>
+              </Issue>
+              <Issue>
+               <Item>'ProcessWrapper.CreateProcess(bool)'</Item>
+               <Item>'ProcessStartInfo.WorkingDirectory.set(string)'</Item>
+               <Item>&#xD;&#xA;   -&gt;'ProcessWrapper.CreateProcess(bool)'&#xD;&#xA;   -&gt;'ProcessWrapper.CreateProcess(bool)'&#xD;&#xA;   -&gt;'ProcessWrapper.RunAndWaitForExit()'</Item>
+              </Issue>
+              <Issue>
+               <Item>'ProcessWrapper.CreateProcess(bool)'</Item>
+               <Item>'ProcessStartInfo.WorkingDirectory.set(string)'</Item>
+               <Item>&#xD;&#xA;   -&gt;'ProcessWrapper.CreateProcess(bool)'&#xD;&#xA;   -&gt;'ProcessWrapper.CreateProcess(bool)'&#xD;&#xA;   -&gt;'ProcessWrapper.RunStandalone()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#RunAndWaitForExit()">
+            <Messages>
+             <Message TypeName="DoNotIndirectlyExposeMethodsWithLinkDemands" Category="Microsoft.Security" CheckId="CA2122" Created="2011-11-19 19:47:26Z">
+              <Issue>
+               <Item>'ProcessWrapper.RunAndWaitForExit()'</Item>
+               <Item>'Process.BeginErrorReadLine()'</Item>
+               <Item>&#xD;&#xA;   -&gt;'ProcessWrapper.RunAndWaitForExit()'&#xD;&#xA;   -&gt;'ProcessWrapper.RunAndWaitForExit()'</Item>
+              </Issue>
+              <Issue>
+               <Item>'ProcessWrapper.RunAndWaitForExit()'</Item>
+               <Item>'Process.BeginOutputReadLine()'</Item>
+               <Item>&#xD;&#xA;   -&gt;'ProcessWrapper.RunAndWaitForExit()'&#xD;&#xA;   -&gt;'ProcessWrapper.RunAndWaitForExit()'</Item>
+              </Issue>
+              <Issue>
+               <Item>'ProcessWrapper.RunAndWaitForExit()'</Item>
+               <Item>'Process.ExitCode.get()'</Item>
+               <Item>&#xD;&#xA;   -&gt;'ProcessWrapper.RunAndWaitForExit()'&#xD;&#xA;   -&gt;'ProcessWrapper.RunAndWaitForExit()'</Item>
+              </Issue>
+              <Issue>
+               <Item>'ProcessWrapper.RunAndWaitForExit()'</Item>
+               <Item>'Process.Start()'</Item>
+               <Item>&#xD;&#xA;   -&gt;'ProcessWrapper.RunAndWaitForExit()'&#xD;&#xA;   -&gt;'ProcessWrapper.RunAndWaitForExit()'</Item>
+              </Issue>
+              <Issue>
+               <Item>'ProcessWrapper.RunAndWaitForExit()'</Item>
+               <Item>'Process.WaitForExit()'</Item>
+               <Item>&#xD;&#xA;   -&gt;'ProcessWrapper.RunAndWaitForExit()'&#xD;&#xA;   -&gt;'ProcessWrapper.RunAndWaitForExit()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#RunStandalone()">
+            <Messages>
+             <Message TypeName="DoNotIndirectlyExposeMethodsWithLinkDemands" Category="Microsoft.Security" CheckId="CA2122" Created="2011-11-19 19:47:26Z">
+              <Issue>
+               <Item>'ProcessWrapper.RunStandalone()'</Item>
+               <Item>'Process.Start()'</Item>
+               <Item>&#xD;&#xA;   -&gt;'ProcessWrapper.RunStandalone()'&#xD;&#xA;   -&gt;'ProcessWrapper.RunStandalone()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="TransparantOutputHandler">
+          <Messages>
+           <Message Id="Transparant" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2011-11-19 19:47:26Z">
+            <Issue Name="Type">
+             <Item>Transparant</Item>
+             <Item>'TransparantOutputHandler'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+         </Type>
+        </Types>
+       </Namespace>
+       <Namespace Name="BuildTool.Bootstrap">
+        <Types>
+         <Type Name="Program">
+          <Messages>
+           <Message TypeName="StaticHolderTypesShouldNotHaveConstructors" Category="Microsoft.Design" CheckId="CA1053" Created="2011-11-19 19:47:26Z">
+            <Issue>
+             <Item>'Program'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#Main(System.String[])">
+            <Messages>
+             <Message Id="args" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Created="2011-11-19 19:47:26Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>'args'</Item>
+               <Item>'Program.Main(string[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+      </Namespaces>
+     </Module>
+    </Modules>
+   </Target>
+   <Target Name="$(ProjectDir)/src/Example.Build/bin/Release/Example.Build.exe">
+    <Modules>
+     <Module Name="example.build.exe">
+      <Messages>
+       <Message TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210" Created="2011-11-19 19:47:26Z">
+        <Issue Name="NoStrongName">
+         <Item>'Example.Build.exe'</Item>
+        </Issue>
+       </Message>
+       <Message TypeName="MarkAssembliesWithClsCompliant" Category="Microsoft.Design" CheckId="CA1014" Created="2011-11-19 19:47:26Z">
+        <Issue>
+         <Item>'Example.Build.exe'</Item>
+        </Issue>
+       </Message>
+      </Messages>
+      <Namespaces>
+       <Namespace Name="Example.Build">
+        <Types>
+         <Type Name="Program">
+          <Messages>
+           <Message TypeName="StaticHolderTypesShouldNotHaveConstructors" Category="Microsoft.Design" CheckId="CA1053" Created="2011-11-19 19:47:26Z">
+            <Issue>
+             <Item>'Program'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#Main(System.String[])">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-11-19 19:47:26Z">
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'Program.Main(string[])'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+      </Namespaces>
+     </Module>
+    </Modules>
+   </Target>
+   <Target Name="$(ProjectDir)/src/Example.Target/bin/Release/Example.Target.dll">
+    <Modules>
+     <Module Name="example.target.dll">
+      <Messages>
+       <Message TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210" Created="2011-11-19 19:47:26Z">
+        <Issue Name="NoStrongName">
+         <Item>'Example.Target.dll'</Item>
+        </Issue>
+       </Message>
+       <Message TypeName="MarkAssembliesWithClsCompliant" Category="Microsoft.Design" CheckId="CA1014" Created="2011-11-19 19:47:26Z">
+        <Issue>
+         <Item>'Example.Target.dll'</Item>
+        </Issue>
+       </Message>
+      </Messages>
+      <Namespaces>
+       <Namespace Name="Example.Target">
+        <Types>
+         <Type Name="Adder">
+          <Members>
+           <Member Name="#Add(System.Int32,System.Int32)">
+            <Messages>
+             <Message Id="x" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2011-11-19 19:47:26Z">
+              <Issue Name="MemberParameterMoreMeaningfulName">
+               <Item>'Adder.Add(int, int)'</Item>
+               <Item>'x'</Item>
+              </Issue>
+             </Message>
+             <Message Id="y" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2011-11-19 19:47:26Z">
+              <Issue Name="MemberParameterMoreMeaningfulName">
+               <Item>'Adder.Add(int, int)'</Item>
+               <Item>'y'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2011-11-19 19:47:26Z" FixCategory="DependsOnFix">
+              <Issue>
+               <Item>'Adder.Add(int, int)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+      </Namespaces>
+     </Module>
+    </Modules>
+   </Target>
+   <Target Name="$(ProjectDir)/src/Example.Tests/bin/Release/Example.Tests.dll">
+    <Modules>
+     <Module Name="example.tests.dll">
+      <Messages>
+       <Message TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210" Created="2011-11-19 19:47:26Z">
+        <Issue Name="NoStrongName">
+         <Item>'Example.Tests.dll'</Item>
+        </Issue>
+       </Message>
+       <Message TypeName="MarkAssembliesWithClsCompliant" Category="Microsoft.Design" CheckId="CA1014" Created="2011-11-19 19:47:26Z">
+        <Issue>
+         <Item>'Example.Tests.dll'</Item>
+        </Issue>
+       </Message>
+      </Messages>
+      <Namespaces>
+       <Namespace Name="Example.Tests">
+        <Types>
+         <Type Name="AdderTests">
+          <Members>
+           <Member Name="#OnePlusOneEqualsTwo()">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2011-11-19 19:47:26Z" FixCategory="DependsOnFix">
+              <Issue>
+               <Item>'AdderTests.OnePlusOneEqualsTwo()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+      </Namespaces>
+     </Module>
+    </Modules>
+   </Target>
+   <Target Name="$(ProjectDir)/src/MockProcess.Tests/bin/Release/MockProcess.Tests.dll">
+    <Modules>
+     <Module Name="mockprocess.tests.dll">
+      <Messages>
+       <Message TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210" Created="2011-11-19 19:47:26Z">
+        <Issue Name="NoStrongName">
+         <Item>'MockProcess.Tests.dll'</Item>
+        </Issue>
+       </Message>
+      </Messages>
+     </Module>
+    </Modules>
+   </Target>
+   <Target Name="$(ProjectDir)/src/MockProcess/bin/Release/MockProcess.exe">
+    <Modules>
+     <Module Name="mockprocess.exe">
+      <Messages>
+       <Message TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210" Created="2011-11-19 19:47:26Z">
+        <Issue Name="NoStrongName">
+         <Item>'MockProcess.exe'</Item>
+        </Issue>
+       </Message>
+       <Message TypeName="MarkAssembliesWithClsCompliant" Category="Microsoft.Design" CheckId="CA1014" Created="2011-11-19 19:47:26Z">
+        <Issue>
+         <Item>'MockProcess.exe'</Item>
+        </Issue>
+       </Message>
+      </Messages>
+      <Namespaces>
+       <Namespace Name="MockProcess">
+        <Types>
+         <Type Name="InstructionFileProcessor">
+          <Members>
+           <Member Name="#Run(System.Collections.Generic.IEnumerable`1&lt;MockProcess.IInstruction&gt;)">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2011-11-19 19:47:26Z" FixCategory="DependsOnFix">
+              <Issue>
+               <Item>'InstructionFileProcessor.Run(IEnumerable&lt;IInstruction&gt;)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="InstructionReader">
+          <Messages>
+           <Message TypeName="IdentifiersShouldHaveCorrectSuffix" Category="Microsoft.Naming" CheckId="CA1710" Created="2011-11-19 19:47:26Z">
+            <Issue>
+             <Item>'InstructionReader'</Item>
+             <Item>Collection</Item>
+            </Issue>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="Program">
+          <Members>
+           <Member Name="#Main(System.String[])">
+            <Messages>
+             <Message Id="args" TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801" Created="2011-11-19 19:47:26Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>'args'</Item>
+               <Item>'Program.Main(string[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="TextInstructionFactory">
+          <Members>
+           <Member Name="#CreateInstruction(System.String)">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-11-19 19:47:26Z">
+              <Issue Name="IFormatProviderAlternateString">
+               <Item>'string.Format(string, object)'</Item>
+               <Item>'TextInstructionFactory.CreateInstruction(string)'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#CreateWaitInstruction(System.String)">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2011-11-19 19:47:26Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>'TextInstructionFactory.CreateWaitInstruction(string)'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.Int32.Parse(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2011-11-19 19:47:26Z">
+              <Issue Name="IFormatProviderAlternate">
+               <Item>'int.Parse(string)'</Item>
+               <Item>'TextInstructionFactory.CreateWaitInstruction(string)'</Item>
+               <Item>'int.Parse(string, IFormatProvider)'</Item>
+               <Item>'CultureInfo.CurrentCulture'</Item>
+               <Item>'CultureInfo.InvariantCulture'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+       <Namespace Name="MockProcess.Instructions">
+        <Types>
+         <Type Name="CommentInstruction">
+          <Members>
+           <Member Name="#_comment">
+            <Messages>
+             <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Created="2011-11-19 19:47:26Z">
+              <Issue>
+               <Item>'CommentInstruction._comment'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+      </Namespaces>
+     </Module>
+    </Modules>
+   </Target>
+  </Targets>
+  <Rules>
+   <Rule TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210">
+    <Resolution Name="NoStrongName">Sign {0} with a strong name key.</Resolution>
+   </Rule>
+   <Rule TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811">
+    <Resolution Name="Default">{0} appears to have no upstream public or protected callers.</Resolution>
+   </Rule>
+   <Rule TypeName="AvoidUninstantiatedInternalClasses" Category="Microsoft.Performance" CheckId="CA1812">
+    <Resolution Name="Default">{0} is an internal class that is apparently never instantiated. If so, remove the code from the assembly. If this class is intended to contain only static methods, consider adding a private constructor to prevent the compiler from generating a default constructor.</Resolution>
+   </Rule>
+   <Rule TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823">
+    <Resolution Name="Default">It appears that field {0} is never used or is only ever assigned to. Use this field or remove it.</Resolution>
+   </Rule>
+   <Rule TypeName="CallGCSuppressFinalizeCorrectly" Category="Microsoft.Usage" CheckId="CA1816">
+    <Resolution Name="NotCalled">Change {0} to call {1}. This will prevent derived types that introduce a finalizer from needing to re-implement 'IDisposable' to call it.</Resolution>
+   </Rule>
+   <Rule TypeName="CollectionPropertiesShouldBeReadOnly" Category="Microsoft.Usage" CheckId="CA2227">
+    <Resolution Name="Default">Change {0} to be read-only by removing the property setter.</Resolution>
+   </Rule>
+   <Rule TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031">
+    <Resolution Name="Default">Modify {0} to catch a more specific exception than {1} or rethrow the exception.</Resolution>
+   </Rule>
+   <Rule TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051">
+    <Resolution Name="Default">Because field {0} is visible outside of its declaring type, change its accessibility to private and add a property, with the same accessibility as the field has currently, to provide access to it.</Resolution>
+   </Rule>
+   <Rule TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002">
+    <Resolution Name="Default">Change {0} in {1} to use Collection&lt;T&gt;, ReadOnlyCollection&lt;T&gt; or KeyedCollection&lt;K,V&gt;</Resolution>
+   </Rule>
+   <Rule TypeName="DoNotIndirectlyExposeMethodsWithLinkDemands" Category="Microsoft.Security" CheckId="CA2122">
+    <Resolution Name="Default">{0} calls into {1} which has a LinkDemand. By making this call, {1} is indirectly exposed to user code. Review the following call stack that might expose a way to circumvent security protection: {2}</Resolution>
+   </Rule>
+   <Rule TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704">
+    <Resolution Name="MemberParameterMoreMeaningfulName">In method {0}, consider providing a more meaningful name than parameter name {1}.</Resolution>
+    <Resolution Name="Type">Correct the spelling of '{0}' in type name {1}.</Resolution>
+   </Rule>
+   <Rule TypeName="IdentifiersShouldHaveCorrectSuffix" Category="Microsoft.Naming" CheckId="CA1710">
+    <Resolution Name="Default">Rename {0} to end in '{1}'.</Resolution>
+   </Rule>
+   <Rule TypeName="IdentifiersShouldNotMatchKeywords" Category="Microsoft.Naming" CheckId="CA1716">
+    <Resolution Name="MemberParameter">In virtual/interface member {0}, rename parameter {1} so that it no longer conflicts with the reserved language keyword '{2}'. Using a reserved keyword as the name of a parameter on a virtual/interface member makes it harder for consumers in other languages to override/implement the member.</Resolution>
+   </Rule>
+   <Rule TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063">
+    <Resolution Name="DisposeImplementation">Modify {0} so that it calls Dispose(true), then calls GC.SuppressFinalize on the current object instance ('this' or 'Me' in Visual Basic), and then returns.</Resolution>
+    <Resolution Name="ProvideDisposeBool">Provide an overridable implementation of Dispose(bool) on {0} or mark the type as sealed. A call to Dispose(false) should only clean up native resources. A call to Dispose(true) should clean up both managed and native resources.</Resolution>
+   </Rule>
+   <Rule TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033">
+    <Resolution Name="Default">Make {0} sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of {1} and is visible to derived classes.</Resolution>
+   </Rule>
+   <Rule TypeName="MarkAssembliesWithClsCompliant" Category="Microsoft.Design" CheckId="CA1014">
+    <Resolution Name="Default">Mark {0} with CLSCompliant(true) because it exposes externally visible types.</Resolution>
+   </Rule>
+   <Rule TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822">
+    <Resolution Name="Default">The 'this' parameter (or 'Me' in Visual Basic) of {0} is never used. Mark the member as static (or Shared in Visual Basic) or use 'this'/'Me' in the method body or at least one property accessor, if appropriate.</Resolution>
+   </Rule>
+   <Rule TypeName="OverrideEqualsAndOperatorEqualsOnValueTypes" Category="Microsoft.Performance" CheckId="CA1815">
+    <Resolution Name="Equals">{0} should override Equals.</Resolution>
+    <Resolution Name="op_Equality">{0} should override the equality (==) and inequality (!=) operators.</Resolution>
+   </Rule>
+   <Rule TypeName="ReviewUnusedParameters" Category="Microsoft.Usage" CheckId="CA1801">
+    <Resolution Name="Default">Parameter {0} of {1} is never used. Remove the parameter or use it in the method body.</Resolution>
+   </Rule>
+   <Rule TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305">
+    <Resolution Name="IFormatProviderAlternate">Because the behavior of {0} could vary based on the current user's locale settings, replace this call in {1} with a call to {2}. If the result of {2} will be based on input from the user, specify {3} as the 'IFormatProvider' parameter. Otherwise, if the result will based on input stored and accessed by software, such as when it is loaded from disk or from a database, specify {4}.</Resolution>
+    <Resolution Name="IFormatProviderAlternateString">Because the behavior of {0} could vary based on the current user's locale settings, replace this call in {1} with a call to {2}. If the result of {2} will be displayed to the user, specify {3} as the 'IFormatProvider' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify {4}.</Resolution>
+   </Rule>
+   <Rule TypeName="SpecifyStringComparison" Category="Microsoft.Globalization" CheckId="CA1307">
+    <Resolution Name="Default">Because the behavior of {0} could vary based on the current user's locale settings, replace this call in {1} with a call to {2}. If the result of {2} will be displayed to the user, such as when sorting a list of items for display in a list box, specify 'StringComparison.CurrentCulture' or 'StringComparison.CurrentCultureIgnoreCase' as the 'StringComparison' parameter. If comparing case-insensitive identifiers, such as file paths, environment variables, or registry keys and values, specify 'StringComparison.OrdinalIgnoreCase'. Otherwise, if comparing case-sensitive identifiers, specify 'StringComparison.Ordinal'.</Resolution>
+   </Rule>
+   <Rule TypeName="StaticHolderTypesShouldNotHaveConstructors" Category="Microsoft.Design" CheckId="CA1053">
+    <Resolution Name="Default">Because type {0} contains only 'static' ('Shared' in Visual Basic) members, add a default private constructor to prevent the compiler from adding a default public constructor.</Resolution>
+   </Rule>
+   <Rule TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001">
+    <Resolution Name="DependsOnFix">Implement IDisposable on {0} because it creates members of the following IDisposable types: {1}. If {0} has previously shipped, adding new members that implement IDisposable to this type is considered a breaking change to existing consumers.</Resolution>
+   </Rule>
+  </Rules>
+ </FxCopReport>
+</FxCopProject>

@@ -2,16 +2,16 @@
 {
     public class StandardErrorInstruction : IInstruction
     {
-        private string _message;
+        public string Message { get; private set; }
 
         public StandardErrorInstruction(string message)
         {
-            this._message = message;
+            this.Message = message;
         }
 
         public void Run()
         {
-            System.Console.Error.WriteLine(_message);
+            System.Console.Error.WriteLine(Message);
         }
     }
 }

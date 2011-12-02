@@ -2,11 +2,11 @@
 {
     public class CommentInstruction: IInstruction
     {
-        private string _comment;
+        public string Comment { get; private set; }
 
         public CommentInstruction(string comment)
         {
-            this._comment = comment;
+            this.Comment = comment;
         }
 
         public void Run()

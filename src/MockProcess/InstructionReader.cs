@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+
 namespace MockProcess
 {
     /// <summary>
-    /// Presents Instructions read from a TextReader as an enumeration.
+    /// Presents IInstructions read from a TextReader as an enumeration.
     /// Actual creation of the instructions is delegated to a factory.
     /// </summary>
     public class InstructionReader : IEnumerable<IInstruction>
@@ -12,9 +13,19 @@ namespace MockProcess
         private readonly TextReader _instructionReader;
         private readonly ITextInstructionFactory _factory;
 
-        public InstructionReader(TextReader instructions, ITextInstructionFactory factory)
+        public InstructionReader(TextReader instructionsText, ITextInstructionFactory factory)
         {
-            this._instructionReader = instructions;
+            if (instructionsText == null)
+            {
+                throw new ArgumentException("Argument cannot be null.", "instructionsText");
+            }
+
+            if (factory == null)
+            {
+                throw new ArgumentException("Argument cannot be null.", "factory");
+            }
+
+            this._instructionReader = instructionsText;
             this._factory = factory;
         }
 

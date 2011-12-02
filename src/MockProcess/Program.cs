@@ -11,7 +11,7 @@ namespace MockProcess
            // {
                 //string instructionsFile = args[0];
                 string instructionsFile = "Instructions.txt";
-                var processor = new InstructionFileProcessor();
+                var processor = new InstructionsFileProcessor();
                 processor.Run(instructionsFile);
            // }
         }

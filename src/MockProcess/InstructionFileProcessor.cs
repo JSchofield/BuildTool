@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace MockProcess
 {                    
-    public class InstructionFileProcessor
+    public class InstructionsFileProcessor
     {
         public void Run(string instructionsFile)
         {
