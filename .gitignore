@@ -21,8 +21,8 @@ TestResult.xml
 *.user
 
 # Build Directories
-**/bin/
-**/obj/
+bin/
+obj/
 
 # .webinfo files are user-specific mappings for project endpoints
 # http://support.microsoft.com/kb/830611
