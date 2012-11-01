@@ -1,9 +1,0 @@
-C:\Users\jon\BuildTool\src\BuildTool.Tests\obj\Release\ResolveAssemblyReference.cache
-C:\Users\jon\BuildTool\src\BuildTool.Tests\bin\Release\BuildTool.Tests.dll
-C:\Users\jon\BuildTool\src\BuildTool.Tests\bin\Release\BuildTool.Tests.pdb
-C:\Users\jon\BuildTool\src\BuildTool.Tests\bin\Release\nunit.framework.dll
-C:\Users\jon\BuildTool\src\BuildTool.Tests\bin\Release\BuildTool.pdb
-C:\Users\jon\BuildTool\src\BuildTool.Tests\bin\Release\nunit.framework.xml
-C:\Users\jon\BuildTool\src\BuildTool.Tests\obj\Release\BuildTool.Tests.dll
-C:\Users\jon\BuildTool\src\BuildTool.Tests\obj\Release\BuildTool.Tests.pdb
-C:\Users\jon\BuildTool\src\BuildTool.Tests\bin\Release\BuildTool.exe

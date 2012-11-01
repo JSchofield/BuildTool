@@ -11,6 +11,8 @@ Thumbs.db
 #
 # Visual Studio
 #
+*.VisualState.xml
+TestResult.xml
 
 # Solution User Options
 *.suo
@@ -19,8 +21,8 @@ Thumbs.db
 *.user
 
 # Build Directories
-bin/
-obj/
+**/bin/
+**/obj/
 
 # .webinfo files are user-specific mappings for project endpoints
 # http://support.microsoft.com/kb/830611
