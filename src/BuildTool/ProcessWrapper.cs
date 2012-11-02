@@ -8,23 +8,26 @@ namespace BuildTool
     {
         private Command _command;
         private string _workingDir;
-        private IList<IOutputHandler> _outputHandlers;
+        private IOutputHandler _outputHandler;
 
-        public ProcessWrapper(Command command, string workingDir, IList<IOutputHandler> outputHandlers)
+        public ProcessWrapper(Command command, string workingDir, IOutputHandler outputHandlers)
         {
             _command = command;
             _workingDir = workingDir;
-            _outputHandlers = outputHandlers;
+            _outputHandler = outputHandlers;
         }
 
         private void ReceiveError(object sender, DataReceivedEventArgs e)
         {
-            foreach (var handler in _outputHandlers) { handler.ReceiveError(e.Data); }
+            if (e.Data == null) { return; }
+            _outputHandler.ReceiveError(e.Data); 
+ 
         }
 
         private void ReceiveOutput(object sender, DataReceivedEventArgs e)
         {
-            foreach (var handler in _outputHandlers) { handler.ReceiveOutput(e.Data); }
+            if (e.Data == null) { return; }
+            _outputHandler.ReceiveOutput(e.Data); 
         }
 
         public void RunStandalone()
@@ -37,7 +40,7 @@ namespace BuildTool
 
         public int RunAndWaitForExit()
         {
-            foreach (var handler in _outputHandlers) { handler.Starting(_command); }
+            _outputHandler.Starting(_command);
 
             int exitCode;
             using (Process process = CreateProcess(false))
@@ -50,7 +53,7 @@ namespace BuildTool
                 process.WaitForExit();
                 exitCode = process.ExitCode;
             }
-            foreach (var handler in _outputHandlers) { handler.Ending(exitCode); }
+            _outputHandler.Ending(exitCode);
             return exitCode;
         }
 

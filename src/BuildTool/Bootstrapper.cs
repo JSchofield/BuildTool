@@ -7,25 +7,30 @@ namespace BuildTool
     public class Bootstrapper: IDisposable
     {
         private readonly string _buildProject;
-        private readonly IOutputHandler _logFile;
+        private readonly Context _context;
         private readonly IOutputHandler _console;
         private readonly TextWriter _fileWriter;
 
-        public Bootstrapper(string buildProject)
+        public Bootstrapper(Context context, string buildProject)
         {
-            _fileWriter = new StreamWriter("Bootstrap.log");
             _buildProject = buildProject;
+            
+            _context = context;
+            _context.ChildWorkingDirectory("Bootstrap");            
+            _context.AddHandler(new HtmlOutputHandler(Path.Combine(_context.WorkingDirectory, "Bootstrap.log")));
 
-            _logFile = new LineNumberingOutputHandler(_fileWriter, _fileWriter);
             _console = new LineNumberingOutputHandler(Console.Out, Console.Error);
         }
 
-        public void RunBuild()
+        public void RunBuild(string buildProject, string[] args)
         {
             try
             {
+                _context.Starting(new Command() { FileName = System.Reflection.Assembly.GetExecutingAssembly().CodeBase, Arguments = string.Join(" ", args)});
+
                 var executable = BuildProject(_buildProject);
-                InvokeBuildExecutable(executable, new string[1] { _buildProject });
+                _context.ReceiveOutput("Launching: " + executable + " " + string.Join(" ", new string[] { @"/p=" + buildProject, args[0] }));
+                InvokeBuildExecutable(executable, new string[] { @"/p=" + buildProject, args[0]} );
             }
             catch(Exception e)
             {
@@ -36,12 +41,11 @@ namespace BuildTool
 
         private string BuildProject(string project)
         {
-            var context = new Context { WorkingDirectory = ".", OutputHandlers = new List<IOutputHandler>() };
-            context.OutputHandlers.Add(_logFile);
-            context.OutputHandlers.Add(_console);
+            _context.ReceiveOutput("<a href=\"" + Path.Combine(_context.WorkingDirectory, "MSBuild.log") + "\">Building " + project + "</a>");
+            _context.OutputHandlers.Add(new HtmlOutputHandler(Path.Combine(_context.WorkingDirectory, "MSBuild.log")));
+            _context.OutputHandlers.Add(_console);
 
-            var boostrapBuild = new MSBuild(context, project);
-            return boostrapBuild.Run();
+            return MSBuild.Run(_context, project);
         }
 
         private void InvokeBuildExecutable(string executable, string[] args)
@@ -55,7 +59,7 @@ namespace BuildTool
                         FileName = executable, 
                         Arguments = string.Join(" ", args) },
                     context.WorkingDirectory,
-                    context.OutputHandlers);
+                    context);
 
             invokeBuildExe.RunStandalone();
         }

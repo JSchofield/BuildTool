@@ -1,0 +1,5 @@
+﻿OUT: MSBuild Test 1
+OUT: Some output 1
+OUT: Some output 2
+OUT: Some output 3
+OUT: Some output 4

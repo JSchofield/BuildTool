@@ -4,6 +4,6 @@ namespace BuildTool
 {
     public interface IProcessFactory
     {
-        IProcessWrapper CreateProcess(Command command, string workingDirectory, IList<IOutputHandler> outputHandlers);
+        IProcessWrapper CreateProcess(Command command, string workingDirectory, IOutputHandler outputHandler);
     }
 }

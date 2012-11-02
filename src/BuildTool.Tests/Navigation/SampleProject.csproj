@@ -5,18 +5,15 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{B30C9BA3-126A-4BDB-8ED6-A66C9BAD8BF1}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{6390DF2C-9635-49FC-8E2E-6E96A9B00737}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BuildTool</RootNamespace>
-    <AssemblyName>BuildTool</AssemblyName>
+    <RootNamespace>BuildTool.Tests</RootNamespace>
+    <AssemblyName>BuildTool.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -26,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -35,46 +31,39 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Build.Framework">
-      <Private>False</Private>
+    <Reference Include="nunit.framework, Version=2.5.10.11092, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" >
+      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <ExecutableExtension>.exe</ExecutableExtension>
+      <HintPath>bin\Release\BuildTool.exe</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Build.Utilities.v4.0" />
     <Reference Include="System" />
     <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bootstrapper.cs" />
-    <Compile Include="FileOutputHandler.cs" />
-    <Compile Include="HtmlOutputHandler.cs" />
-    <Compile Include="LineNumberingOutputHandler.cs" />
-    <Compile Include="Context.cs" />
-    <Compile Include="IOutputHandler.cs" />
-    <Compile Include="IProcessFactory.cs" />
-    <Compile Include="IProcessWrapper.cs" />
-    <Compile Include="MSBuild.cs" />
-    <Compile Include="Command.cs" />
-    <Compile Include="MSBuildLogger.cs" />
-    <Compile Include="MSBuildOutputHandler.cs" />
-    <Compile Include="Navigation\DllReference.cs" />
-    <Compile Include="Navigation\FindSolution.cs" />
-    <Compile Include="Navigation\Project.cs" />
-    <Compile Include="Navigation\ProjectConfiguration.cs" />
-    <Compile Include="Navigation\ProjectInfo.cs" />
-    <Compile Include="Navigation\ProjectItem.cs" />
-    <Compile Include="Navigation\ProjectItemType.cs" />
-    <Compile Include="Navigation\ProjectReference.cs" />
-    <Compile Include="Navigation\Solution.cs" />
-    <Compile Include="ProcessFactory.cs" />
-    <Compile Include="ProcessWrapper.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="MSBuildTests.cs" />
+    <Compile Include="Navigation\ProjectInfoTests.cs" />
+    <Compile Include="Navigation\SolutionTests.cs" />
+    <Compile Include="ProcessWrapperTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TransparantOutputHandler.cs" />
+    <Compile Include="StubOutputHandler.cs" />
+    <Compile Include="TestFile.cs" />
+    <Compile Include="TextOutputHandler.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <ProjectReference Include="..\BuildTool\BuildTool.csproj">
+      <Project>{B30C9BA3-126A-4BDB-8ED6-A66C9BAD8BF1}</Project>
+      <Name>BuildTool</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="HtmlOutputHandler.css" />
+    <Content Include="Instructions.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Navigation\SampleProject.csproj">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Navigation\SampleSolution.sln" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

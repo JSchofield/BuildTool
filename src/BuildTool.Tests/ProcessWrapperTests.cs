@@ -1,24 +1,82 @@
 ﻿using System;
+using System.Collections.Generic;
 using NUnit.Framework;
+using BuildTool;
 
 namespace BuildTool.Tests
 {
-    [TestFixture]
-    public class ProcessWrapperTests
+    public abstract class ProcessWrapperSpecification
     {
-        /*
-        Will need to write a MockProcess which be a command-line application, that will take a file as
-        an argument. The file will contain instructions on how the app will behave
-        EG:
-         out: this is the first line to standard output
-         out: this is the second line to standard output
-         wait: 5000
-         in: //wait for input
-         err: This is the first line to standard err
-         exit: 0 
-         
-        Then there will need to be a test helper that will write out these files and run the process
-        through the process runner to set up the test.
-        */
+        protected abstract string Instructions { get; }
+        protected TestFile InstructionsFile { get; set; }
+        protected IProcessOutputs Outputs { get; private set; }
+
+        [SetUp]
+        public void CreateInstructionsFile()
+        {
+            InstructionsFile = new TestFile(Instructions);
+            When();
+        }
+
+        protected virtual void When()
+        {
+            Outputs = new StubOutputHandler();
+
+            var pw = new ProcessWrapper(
+                new Command() { FileName = "MockProcess.exe", Arguments = InstructionsFile.Location },
+                ".",
+                (IOutputHandler)Outputs);
+
+            pw.RunAndWaitForExit();
+
+        }
+
+        [TearDown]
+        public void DeleteInstructionsFile()
+        {
+            InstructionsFile.Dispose();
+        }
     }
+
+    [TestFixture]
+    public class WhenProcessSendsThreeLinesToStandardOutput: ProcessWrapperSpecification
+    {
+        protected override string Instructions { get {
+            return string.Join("\n",
+                "OUT: Some output 1",
+                "OUT: Some output 2",
+                "OUT: Some output 3"); } }
+
+        [Test]
+        public void TheWrapperSendsOneStartingMessageWithTheFileNameAndArguments()
+        {
+            Assert.AreEqual(1, Outputs.Startings.Count);
+            Assert.AreEqual("MockProcess.exe", Outputs.Startings[0].FileName);
+            Assert.AreEqual(InstructionsFile.Location, Outputs.Startings[0].Arguments);
+        }
+
+        [Test]
+        public void TheWrapperSendsThreeOutputMessages()
+        {
+            Assert.AreEqual(3, Outputs.Outputs.Count);
+            Assert.AreEqual("Some output 1", Outputs.Outputs[0]);
+            Assert.AreEqual("Some output 2", Outputs.Outputs[1]);
+            Assert.AreEqual("Some output 3", Outputs.Outputs[2]);
+        }
+
+        [Test]
+        public void TheWrapperSendsNoErrorMessages()
+        {
+            Assert.AreEqual(0, Outputs.Errors.Count);
+        }
+        
+        [Test]
+        public void TheWrapperSendsNoEndingMessages()
+        {
+            Assert.AreEqual(1, Outputs.Endings.Count);
+            Assert.AreEqual(0, Outputs.Endings[0]);
+        }
+    }
+
+
 }

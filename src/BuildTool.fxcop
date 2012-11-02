@@ -21,13 +21,22 @@
   <IgnoreGeneratedCode>False</IgnoreGeneratedCode>
  </ProjectOptions>
  <Targets>
-  <Target Name="$(ProjectDir)/src/BuildTool.Tests/bin/Release/BuildTool.Tests.dll" Analyze="True" AnalyzeAllChildren="True" />
-  <Target Name="$(ProjectDir)/src/BuildTool/bin/Release/BuildTool.exe" Analyze="True" AnalyzeAllChildren="True" />
-  <Target Name="$(ProjectDir)/src/Example.Build/bin/Release/Example.Build.exe" Analyze="True" AnalyzeAllChildren="True" />
-  <Target Name="$(ProjectDir)/src/Example.Target/bin/Release/Example.Target.dll" Analyze="True" AnalyzeAllChildren="True" />
-  <Target Name="$(ProjectDir)/src/Example.Tests/bin/Release/Example.Tests.dll" Analyze="True" AnalyzeAllChildren="True" />
-  <Target Name="$(ProjectDir)/src/MockProcess.Tests/bin/Release/MockProcess.Tests.dll" Analyze="True" AnalyzeAllChildren="True" />
-  <Target Name="$(ProjectDir)/src/MockProcess/bin/Release/MockProcess.exe" Analyze="True" AnalyzeAllChildren="True" />
+  <AssemblyReferenceDirectories>
+   <Directory>$(ProjectDir)/src/MockProcess/bin/Release/</Directory>
+   <Directory>$(ProjectDir)/src/MockProcess.Tests/bin/Release/</Directory>
+   <Directory>$(ProjectDir)/src/Example.Tests/bin/Release/</Directory>
+   <Directory>$(ProjectDir)/src/Example.Target/bin/Release/</Directory>
+   <Directory>$(ProjectDir)/src/Example.Build/bin/Release/</Directory>
+   <Directory>$(ProjectDir)/src/BuildTool/bin/Release/</Directory>
+   <Directory>$(ProjectDir)/src/BuildTool.Tests/bin/Release/</Directory>
+  </AssemblyReferenceDirectories>
+  <Target Name="$(ProjectDir)/BuildTool.Tests/bin/Release/BuildTool.Tests.dll" Analyze="True" AnalyzeAllChildren="True" />
+  <Target Name="$(ProjectDir)/BuildTool/bin/Release/BuildTool.exe" Analyze="True" AnalyzeAllChildren="True" />
+  <Target Name="$(ProjectDir)/Example.Build/bin/Release/Example.Build.exe" Analyze="True" AnalyzeAllChildren="True" />
+  <Target Name="$(ProjectDir)/Example.Target/bin/Release/Example.Target.dll" Analyze="True" AnalyzeAllChildren="True" />
+  <Target Name="$(ProjectDir)/Example.Tests/bin/Release/Example.Tests.dll" Analyze="True" AnalyzeAllChildren="True" />
+  <Target Name="$(ProjectDir)/MockProcess.Tests/bin/Release/MockProcess.Tests.dll" Analyze="True" AnalyzeAllChildren="True" />
+  <Target Name="$(ProjectDir)/MockProcess/bin/Release/MockProcess.exe" Analyze="True" AnalyzeAllChildren="True" />
  </Targets>
  <Rules>
   <RuleFiles>
@@ -47,7 +56,7 @@
  </Rules>
  <FxCopReport Version="10.0">
   <Targets>
-   <Target Name="$(ProjectDir)/src/BuildTool.Tests/bin/Release/BuildTool.Tests.dll">
+   <Target Name="$(ProjectDir)/BuildTool.Tests/bin/Release/BuildTool.Tests.dll">
     <Modules>
      <Module Name="buildtool.tests.dll">
       <Messages>
@@ -89,7 +98,7 @@
      </Module>
     </Modules>
    </Target>
-   <Target Name="$(ProjectDir)/src/BuildTool/bin/Release/BuildTool.exe">
+   <Target Name="$(ProjectDir)/BuildTool/bin/Release/BuildTool.exe">
     <Modules>
      <Module Name="buildtool.exe">
       <Messages>
@@ -127,16 +136,6 @@
              <Message TypeName="ImplementIDisposableCorrectly" Category="Microsoft.Design" CheckId="CA1063" Created="2011-11-19 19:47:26Z">
               <Issue Name="DisposeImplementation">
                <Item>'Bootstrapper.Dispose()'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#RunBuild()">
-            <Messages>
-             <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Created="2011-11-19 19:47:26Z">
-              <Issue>
-               <Item>'Bootstrapper.RunBuild()'</Item>
-               <Item>'Exception'</Item>
               </Issue>
              </Message>
             </Messages>
@@ -180,28 +179,6 @@
             </Issue>
            </Message>
           </Messages>
-         </Type>
-         <Type Name="HtmlOutputHandler">
-          <Members>
-           <Member Name="#hasEnded">
-            <Messages>
-             <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Created="2011-11-19 19:47:26Z">
-              <Issue>
-               <Item>'HtmlOutputHandler.hasEnded'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#hasStarted">
-            <Messages>
-             <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Created="2011-11-19 19:47:26Z">
-              <Issue>
-               <Item>'HtmlOutputHandler.hasStarted'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
          </Type>
          <Type Name="IOutputHandler">
           <Members>
@@ -655,7 +632,7 @@
      </Module>
     </Modules>
    </Target>
-   <Target Name="$(ProjectDir)/src/Example.Build/bin/Release/Example.Build.exe">
+   <Target Name="$(ProjectDir)/Example.Build/bin/Release/Example.Build.exe">
     <Modules>
      <Module Name="example.build.exe">
       <Messages>
@@ -703,7 +680,7 @@
      </Module>
     </Modules>
    </Target>
-   <Target Name="$(ProjectDir)/src/Example.Target/bin/Release/Example.Target.dll">
+   <Target Name="$(ProjectDir)/Example.Target/bin/Release/Example.Target.dll">
     <Modules>
      <Module Name="example.target.dll">
       <Messages>
@@ -752,7 +729,7 @@
      </Module>
     </Modules>
    </Target>
-   <Target Name="$(ProjectDir)/src/Example.Tests/bin/Release/Example.Tests.dll">
+   <Target Name="$(ProjectDir)/Example.Tests/bin/Release/Example.Tests.dll">
     <Modules>
      <Module Name="example.tests.dll">
       <Messages>
@@ -789,7 +766,7 @@
      </Module>
     </Modules>
    </Target>
-   <Target Name="$(ProjectDir)/src/MockProcess.Tests/bin/Release/MockProcess.Tests.dll">
+   <Target Name="$(ProjectDir)/MockProcess.Tests/bin/Release/MockProcess.Tests.dll">
     <Modules>
      <Module Name="mockprocess.tests.dll">
       <Messages>
@@ -802,7 +779,7 @@
      </Module>
     </Modules>
    </Target>
-   <Target Name="$(ProjectDir)/src/MockProcess/bin/Release/MockProcess.exe">
+   <Target Name="$(ProjectDir)/MockProcess/bin/Release/MockProcess.exe">
     <Modules>
      <Module Name="mockprocess.exe">
       <Messages>
@@ -820,19 +797,6 @@
       <Namespaces>
        <Namespace Name="MockProcess">
         <Types>
-         <Type Name="InstructionFileProcessor">
-          <Members>
-           <Member Name="#Run(System.Collections.Generic.IEnumerable`1&lt;MockProcess.IInstruction&gt;)">
-            <Messages>
-             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2011-11-19 19:47:26Z" FixCategory="DependsOnFix">
-              <Issue>
-               <Item>'InstructionFileProcessor.Run(IEnumerable&lt;IInstruction&gt;)'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
          <Type Name="InstructionReader">
           <Messages>
            <Message TypeName="IdentifiersShouldHaveCorrectSuffix" Category="Microsoft.Naming" CheckId="CA1710" Created="2011-11-19 19:47:26Z">
@@ -894,23 +858,6 @@
          </Type>
         </Types>
        </Namespace>
-       <Namespace Name="MockProcess.Instructions">
-        <Types>
-         <Type Name="CommentInstruction">
-          <Members>
-           <Member Name="#_comment">
-            <Messages>
-             <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Created="2011-11-19 19:47:26Z">
-              <Issue>
-               <Item>'CommentInstruction._comment'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
-        </Types>
-       </Namespace>
       </Namespaces>
      </Module>
     </Modules>
@@ -934,9 +881,6 @@
    </Rule>
    <Rule TypeName="CollectionPropertiesShouldBeReadOnly" Category="Microsoft.Usage" CheckId="CA2227">
     <Resolution Name="Default">Change {0} to be read-only by removing the property setter.</Resolution>
-   </Rule>
-   <Rule TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031">
-    <Resolution Name="Default">Modify {0} to catch a more specific exception than {1} or rethrow the exception.</Resolution>
    </Rule>
    <Rule TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051">
     <Resolution Name="Default">Because field {0} is visible outside of its declaring type, change its accessibility to private and add a property, with the same accessibility as the field has currently, to provide access to it.</Resolution>

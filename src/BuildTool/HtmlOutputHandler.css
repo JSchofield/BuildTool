@@ -1,0 +1,51 @@
+﻿html {
+	font-family:				verdana;
+	background-color:	#323232;}
+body {
+	margin:					0px;
+	padding:					0px;}
+a, a:visited {
+	color:						#AACCFF;}
+.time {
+	border-right:			#222222 solid 1px;
+	vertical-align:			top;
+	padding-left:			5px;
+	padding-right:			5px;
+	width:						130px;}
+.msg {
+	padding-left:			10px;}
+.title {
+	color:						#bbbbbb;
+	background-color:	navy;
+	font-weight:			bold;
+	padding-left:			10px;
+	padding-right:			10px;
+	padding-top:			5px;
+	padding-bottom:		5px;}
+.header, .footer {
+	color:						#dddddd;
+	margin:					10px;
+	padding-bottom:		15px;	
+	padding-top:			5px;	
+	font-size:					large;}
+.header {
+	border-bottom:		1px solid #dddddd;}
+.footer {
+	border-top:				1px solid #dddddd;}
+.output {
+	color:						#bbbbbb;
+	width:						100%;
+	margin:					0px;
+	padding-bottom:		10px;
+	padding-top:			10px;}
+.fileName {
+	font-weight:			bold;}
+.args {
+}
+.err {
+	background-color:	#643232;
+	color:						yellow;}
+.highlight {
+	background-color:	#646432;
+	color:						lightgreen;}
+.out {}

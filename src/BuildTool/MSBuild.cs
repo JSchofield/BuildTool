@@ -6,33 +6,21 @@ namespace BuildTool
     {
         private const string msBuildExeFile = @"C:\Windows\Microsoft.NET\Framework\v4.0.30319\msbuild.exe";
 
-        private readonly Context _context;
-        private readonly IProcessWrapper _process;
-        private readonly MSBuildOutputHandler _outputHandler;
-
-        public MSBuild(Context context, string projectFile)
+        public static string Run(Context context, string projectFile)
         {
-            _context = context;
-            _outputHandler = new MSBuildOutputHandler();
-            _context.OutputHandlers.Add(_outputHandler);
-            _process = CreateMSBuildProcess(projectFile);
-        }
+            var outputHandler = new MSBuildOutputHandler();
+            context.OutputHandlers.Add(outputHandler);
 
-        private IProcessWrapper CreateMSBuildProcess(string projectFile)
-        {
-            return 
+            var process = 
                 new ProcessFactory().CreateProcess(
-                    new Command { 
-                        FileName = msBuildExeFile, 
-                        Arguments = projectFile },
-                    _context.WorkingDirectory,
-                    _context.OutputHandlers);
-        }
+                    new Command {
+                        FileName = msBuildExeFile,
+                        Arguments = projectFile},
+                    context.WorkingDirectory,
+                    context);
 
-        public string Run()
-        {
-            _process.RunAndWaitForExit();
-            return _outputHandler.CompileOutput;
+            process.RunAndWaitForExit();
+            return outputHandler.CompileOutput;
         }
     }
 }

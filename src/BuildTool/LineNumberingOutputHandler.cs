@@ -18,8 +18,7 @@ namespace BuildTool
 
         public void Starting(Command info)
         {
-            _standardOut.WriteLine("STARTING PROCESS");
-            _standardOut.WriteLine(string.Format("CMD: {0} {1}", info.FileName, info.Arguments));
+            _standardOut.WriteLine(string.Format("STARTING PROCESS: {0} {1}", info.FileName, info.Arguments));
             _standardOut.WriteLine("-------------------------------------------------------------------------------------");
             _standardOut.Flush();
         }

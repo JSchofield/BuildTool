@@ -1,9 +1,9 @@
 ﻿<NUnitProject>
   <Settings activeconfig="Debug" />
   <Config name="Debug" binpathtype="Auto" runtimeFramework="v4.0">
-    <assembly path="src\BuildTool.Tests\bin\Release\BuildTool.Tests.dll" />
-    <assembly path="src\Example.Tests\bin\Release\Example.Tests.dll" />
-    <assembly path="src\MockProcess.Tests\bin\Release\MockProcess.Tests.dll" />
+    <assembly path="BuildTool.Tests\bin\Debug\BuildTool.Tests.dll" />
+    <assembly path="Example.Tests\bin\Debug\Example.Tests.dll" />
+    <assembly path="MockProcess.Tests\bin\Debug\MockProcess.Tests.dll" />
   </Config>
   <Config name="Release" binpathtype="Auto" />
 </NUnitProject>
